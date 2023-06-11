@@ -15,6 +15,27 @@
   <main>
     <h1>Welcome to MycoSolutions</h1>
     <p>Gonna Start testing some code here.</p>
+    <pre><code>
+      # Uninstall Roblox
+
+      # Check if Roblox is installed
+      $uninstallKey = "HKLM:\Software\Microsoft\Windows\CurrentVersion\Uninstall\Roblox"
+      $robloxUninstallKeyExists = Test-Path $uninstallKey
+      
+      if ($robloxUninstallKeyExists) {
+          # Get the uninstall string from the registry
+          $uninstallString = (Get-ItemProperty -Path $uninstallKey).UninstallString
+          $uninstallArgs = "/S"
+          
+          Write-Host "Uninstalling Roblox..."
+          Start-Process -FilePath $uninstallString -ArgumentList $uninstallArgs -Wait
+          Write-Host "Roblox has been uninstalled."
+      } else {
+          Write-Host "Roblox is not installed on this computer."
+      }
+      
+      </code></pre>
+      
     <!-- Rest of the content -->
   </main>
   <footer>
